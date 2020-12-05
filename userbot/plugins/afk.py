@@ -107,7 +107,7 @@ async def on_afk(event):
         #           time %= 60
         #          seconds = time
         #         if days == 1:
-        #            afk_since = "**Yesterday**"
+        #            afk_since = "**Kemarin**"
         #       elif days > 1:
         #          if days > 6:
         #             date = now + \
@@ -118,17 +118,19 @@ async def on_afk(event):
         #        wday = now + datetime.timedelta(days=-days)
         #       afk_since = wday.strftime('%A')
         #            elif hours > 1:
-        #               afk_since = f"`{int(hours)}h{int(minutes)}m` **ago**"
+        #               afk_since = f"`{int(jam)}h{int(menit)}m` **lalu**"
         #          elif minutes > 0:
-        #             afk_since = f"`{int(minutes)}m{int(seconds)}s` **ago**"
+        #             afk_since = f"`{int(menit)}m{int(detik)}s` **lalu**"
         #        else:
-        #           afk_since = f"`{int(seconds)}s` **ago**"
+        #           afk_since = f"`{int(detik)}s` **lalu**
+
+
         msg = None
         message_to_reply = (
-            f"__ Master Been #AFK since__ `{total_afk_time}`"
-            + f"\n\n_\n**REASON**: {reason}"
+            f"__ @KasumiC Sedang AFK!! #AFK sejak__ `{total_afk_time}`"
+            + f"\n\n_\n**ALASAN**: {alasan}"
             if reason
-            else f"**Hey!!**\n`Master is  #AFK`\n\n__Since__>>> {total_afk_time}"
+            else f"**Hey!!**\n`@KasumiC Sedang AFK!!  #AFK`\n\n__Sejak__>>> {total_afk_time}"
         )
         msg = await event.reply(message_to_reply)
         await asyncio.sleep(2)
@@ -163,7 +165,7 @@ async def _(event):
         USER_AFK = f"yes: {reason}"  # pylint:disable=E0602
         if reason:
             await borg.send_message(
-                event.chat_id, f"**I shall be Going afk!**\n __Reason >>> {reason}__"
+                event.chat_id, f"**Aku akan pergi afk!**\n __Alasan >>> {reason}__"
             )
         else:
             await borg.send_message(event.chat_id, f"**I am Going afk!**")
@@ -172,7 +174,7 @@ async def _(event):
         try:
             await borg.send_message(  # pylint:disable=E0602
                 Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
-                f"#AFKTRUE \nSet AFK mode to True, and Reason is {reason}",
+                f"#AFKTRUE \nSet AFK mode to True, and Alasan is {reason}",
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             logger.warn(str(e))  # pylint:disable=E0602
